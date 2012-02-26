@@ -1,0 +1,18 @@
+
+# Set wine to 64bit
+#export WINEARCH="win32"
+
+
+# Check for an interactive session
+[ -z "$PS1" ] && return
+
+# Set colored output for some applications
+# export GREP_COLOR="0;44"
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias ghci='ghci'
+
+PS1="\[\e[0;34m\][\t] \[\e[0;32m\]\u\[\e[0;34m\] @ \[\e[0;32m\]\H \[\e[0;0m\]\W \[\e[0;34m\]\$ 
+\[\e[0;34m\][> \[\e[0;0m\]"
+
+trap 'echo -ne "\n"' DEBUG
