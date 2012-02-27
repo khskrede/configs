@@ -1,0 +1,40 @@
+
+" Configure options for bufferlist
+
+map <silent> <F3> :call BufferList()<CR>
+
+let g:BufferListWidth = 25
+let g:BufferListMaxWidth = 50
+hi BufferSelected term=reverse ctermfg=white ctermbg=black cterm=bold
+hi BufferNormal term=NONE ctermfg=white ctermbg=black cterm=NONE
+
+" Configure python indentation
+
+au BufRead,BufNewFile *.py set expandtab
+au BufRead,BufNewFile *.py set tabstop=4
+
+" Configure c/c++ indentation
+
+au BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp set expandtab
+au BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp set tabstop=3
+
+" Configure hs indentation
+
+au BufRead,BufNewFile *.hs set expandtab
+au BufRead,BufNewFile *.hs set tabstop=4
+
+" Allow switching buffers without saving
+
+set hidden
+
+" Set syntax highlighting on
+
+syntax on
+
+" Set mouse usable
+
+set mouse=a
+
+" Set line numbers on
+
+set nu
