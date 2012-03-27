@@ -56,6 +56,8 @@ local function tile_group(cls, wa, orientation, fact, group)
     local geom = {}
     local used_size = 0
     local unused = wa[height]
+    local stat_coord = wa[x]
+    --stat_coord = size
     for c = group.first,group.last do
         local i = c - group.first +1
         geom[width] = size
@@ -70,59 +72,40 @@ local function tile_group(cls, wa, orientation, fact, group)
         used_size = math.max(used_size, geom[width])
  
 
+        -- Useless gap.
+        useless_gap = 25
+        if useless_gap > 0
+        then
+            -- Top and left clients are shrinked by two steps and
+            -- get moved away from the border. Other clients just
+            -- get shrinked in one direction.
 
+            top = false
+            left = false
 
-
-
-            -- Useless gap.
-            useless_gap = 20
-            if useless_gap > 0
-            then
-                -- Top and left clients are shrinked by two steps and
-                -- get moved away from the border. Other clients just
-                -- get shrinked in one direction.
-
-                top = false
-		left = false
-
-                if geom[y] < 50 then
-                    top = true
-                end
-
-		if geom[x] < 50 then
-		    left = true
-		end
-
-		if top then
-	                geom[height] = geom[height] - 2 * useless_gap
-        	        geom[y] = geom[y] + useless_gap
-		else
-			geom[height] = geom[height] - useless_gap
-		end
-
-		if left then
-                	geom[width] = geom[width] - 2 * useless_gap
-                	geom[x] = geom[x] + useless_gap
-		else
-			geom[width] = geom[width] - useless_gap
-		end
+            if geom[y] == wa[y] then
+                top = true
             end
-            -- End of useless gap.
 
+            if geom[x] == 0 or geom[x] == wa[x] then
+                left = true
+            end
 
+            if top then
+                geom[height] = geom[height] - 2 * useless_gap
+                geom[y] = geom[y] + useless_gap
+            else
+                geom[height] = geom[height] - useless_gap
+            end
 
-
-
-
-
-
-
-
-
-
-
-
-
+            if left then
+                geom[width] = geom[width] - 2 * useless_gap
+                geom[x] = geom[x] + useless_gap
+            else
+                geom[width] = geom[width] - useless_gap
+            end
+        end
+        -- End of useless gap.
 
         geom = cls[c]:geometry(geom)
    end

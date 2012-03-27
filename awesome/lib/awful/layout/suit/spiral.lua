@@ -15,6 +15,8 @@ local function spiral(p, spiral)
     local cls = p.clients
     local n = #cls
 
+    local static_wa = wa
+
     for k, c in ipairs(cls) do
         if k < n then
             if k % 2 == 0 then
@@ -46,7 +48,7 @@ local function spiral(p, spiral)
 
 
             -- Useless gap.
-            useless_gap = 20
+            useless_gap = 25
             if useless_gap > 0
             then
                 -- Top and left clients are shrinked by two steps and
@@ -56,11 +58,11 @@ local function spiral(p, spiral)
                 top = false
 		left = false
 
-                if wa2.y < 50 then
+                if wa2.y == static_wa.y then
                     top = true
                 end
 
-		if wa2.x < 50 then
+		if wa2.x == static_wa.x then
 		    left = true
 		end
 
