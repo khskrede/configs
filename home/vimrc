@@ -1,0 +1,55 @@
+
+" Configure options for bufferlist
+
+map <silent> <F3> :call BufferList()<CR>
+
+let g:BufferListWidth = 25
+let g:BufferListMaxWidth = 50
+hi BufferSelected term=reverse ctermfg=white ctermbg=black cterm=bold
+hi BufferNormal term=NONE ctermfg=white ctermbg=black cterm=NONE
+
+" Configure for python
+
+au BufRead,BufNewFile *.py set expandtab
+au BufRead,BufNewFile *.py set tabstop=4
+
+" Configure for c/c++
+
+au BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp set expandtab
+au BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp set tabstop=3
+
+" Configure for lua
+
+au BufRead,BufNewFile *.lua set expandtab
+au BufRead,BufNewFile *.lua set tabstop=4
+
+" Configure for haskell
+
+au BufRead,BufNewFile *.hs set expandtab
+au BufRead,BufNewFile *.hs set tabstop=4
+
+" Configure for Latex
+
+au BufRead,BufNewFile *.tex set expandtab
+au BufRead,BufNewFile *.tex set tabstop=4
+au BufRead,BufNewFile *.tex setf tex
+
+" Allow switching buffers without saving
+
+set hidden
+
+" Set syntax highlighting on
+
+syntax on
+
+" Set mouse usable
+
+set mouse=a
+
+" Set line numbers on
+
+set nu
+
+" Use viminfo to store and restore buffer list
+
+ 
